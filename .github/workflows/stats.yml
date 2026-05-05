@@ -1,0 +1,37 @@
+name: Stats
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule: [{ cron: "0 0 * * 0" }] # Runs every Sunday at midnight.
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:        
+      - uses: actions/checkout@v4
+
+      - name: Stats Card
+        uses: stats-organization/github-readme-stats-action@v1.1.0
+        with:
+          card: stats
+          token: ${{ secrets.STATS_CARD_TOKEN }}
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=gruvbox
+          path: profile/stats.svg
+          
+      # - name: Top Languages Card
+      #   uses: vn7n24fzaq/github-readme-stats-action@v1
+      #   with:
+      #     output: profile/langs.svg
+      #     query: username=${{ github.repository_owner }}&theme=gruvbox&layout=donut&hide=javascript,html,css
+      #     token: ${{ secrets.STATS_CARD_TOKEN }}
+          
+      - name: Commit & Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update README stats [skip ci]"
+          file_pattern: 'profile/*.svg'
