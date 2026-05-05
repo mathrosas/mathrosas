@@ -19,7 +19,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v1.1.0
         with:
           card: stats
-          token: ${{ secrets.STATS_CARD_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
           options: username=${{ github.repository_owner }}&show_icons=true&theme=gruvbox
           path: profile/stats.svg
           
@@ -28,7 +28,7 @@ jobs:
       #   with:
       #     output: profile/langs.svg
       #     query: username=${{ github.repository_owner }}&theme=gruvbox&layout=donut&hide=javascript,html,css
-      #     token: ${{ secrets.STATS_CARD_TOKEN }}
+      #     token: ${{ secrets.STATS_TOKEN }}
           
       - name: Commit & Push
         uses: stefanzweifel/git-auto-commit-action@v5
