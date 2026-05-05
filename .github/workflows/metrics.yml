@@ -13,7 +13,7 @@ jobs:
       - name: Isometric Calendar
         uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.STATS_CARD_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
           filename: profile/metrics-isocalendar.svg
           committer_branch: main
           base: ""
@@ -23,7 +23,7 @@ jobs:
       - name: Language & Stack Stats
         uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.STATS_CARD_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
           filename: profile/metrics-languages.svg
           committer_branch: main
           base: ""
